@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'store#index', as: 'store'
+  
+  devise_for :users
 
   resources :items, only: [:show, :index]
   resources :categories, only: [:show, :index]

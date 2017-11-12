@@ -1,7 +1,15 @@
-<% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %>
-<% end %>
+<fieldset>
+  <legend>Categories:</legend>
+  <% @categories.each do |category| %>
+    <%= link_to category.title, category_path(category) %>
+  <% end %>
+</fieldset>
 
-<% @items.each do |item| %>
-  <p><%= item.title %> | <%= number_to_currency(item.price) %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
-<% end %>
+<br></br>
+
+<fieldset>
+  <legend>Available Items:</legend>
+  <% @items.each do |item| %>
+    <p><%= item.title %> | <%= "$#{item.price.to_f/100}" %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) if user_signed_in? %></p>
+  <% end %>
+</fieldset>

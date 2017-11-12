@@ -1,0 +1,6 @@
+<li> Signed in as <%= current_user.email %></li>
+<li> <%= link_to "Store Home", store_path %> </li>
+  <% if current_user && current_user.current_cart %>
+    <li> <%= link_to "Cart", cart_path(current_user.current_cart) %> </li>
+  <% end %>
+<li> <%= link_to("Sign out", destroy_user_session_path, method: 'delete') %> </li>
